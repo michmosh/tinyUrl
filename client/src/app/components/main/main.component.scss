@@ -7,7 +7,23 @@
             width:100%;
         } 
     }
+    a.btn.btn-primary{
+        width:20rem;
+    }
  }
  .link-wrapper{
     padding-top:5rem;
+}
+.alert {
+    min-height: 2rem;
+    padding:2rem;
+    box-sizing: border-box;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.spinner{
+    position: absolute;
+    top: 8rem;
+    left: 47%;
 }

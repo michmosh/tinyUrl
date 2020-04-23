@@ -1,3 +1,9 @@
+<div [ngStyle]="{'visibility':!err?.error? 'hidden':'visible'}" class="alert alert-danger">
+  {{err?.error}}
+</div>
+<span [hidden]="!showLoader" class="spinner">
+    Loading...
+</span>
 <div class="flex">
   <form class="clr-form" clrForm>
     <div class="clr-form-control"><input clrInput placeholder="type any url" name="url" [(ngModel)]="url" class="clr-input"/></div>
@@ -5,13 +11,12 @@
   </form>
 </div>
 <div *ngIf="urlObject?.short_url && !err?.error && !urlObject?.isOriginal" class="link-wrapper flex">
-  <a target="_blank" [href]="hrefBase + urlObject.short_url">{{hrefBase + urlObject.short_url}}</a>
+  <a #url class="btn btn-primary" target="_blank" [href]="hrefBase + urlObject.short_url">{{hrefBase + urlObject.short_url}}</a>
+  <a class="btn btn-outline" (click)="copyToClip(url)" title="copy to clipboard"><clr-icon shape="copy-to-clipboard"></clr-icon></a>
 </div>
 <div *ngIf="urlObject?.short_url && !err?.error && urlObject?.isOriginal" class="link-wrapper flex">
-  <a target="_blank" [href]="urlObject.long_url">{{urlObject.long_url}}</a>
+  <a #url class="btn btn-primary" target="_blank" [href]="urlObject.long_url">{{urlObject.long_url}}</a>
+  <a class="btn btn-outline" (click)="copyToClip(url)" title="copy to clipboard"><clr-icon shape="copy-to-clipboard"></clr-icon></a>
 </div>
 <div>
-  <div *ngIf="err?.error" class="alert alert-app-level">
-    {{err.error}}
-</div>
 </div>
