@@ -1,0 +1,17 @@
+<div class="flex">
+  <form class="clr-form" clrForm>
+    <div class="clr-form-control"><input clrInput placeholder="type any url" name="url" [(ngModel)]="url" class="clr-input"/></div>
+    <div class="clr-form-control"><button (click)="sendUrl()" class="btn btn-outline btn-block ">Submit</button></div>
+  </form>
+</div>
+<div *ngIf="urlObject?.short_url && !err?.error && !urlObject?.isOriginal" class="link-wrapper flex">
+  <a target="_blank" [href]="hrefBase + urlObject.short_url">{{hrefBase + urlObject.short_url}}</a>
+</div>
+<div *ngIf="urlObject?.short_url && !err?.error && urlObject?.isOriginal" class="link-wrapper flex">
+  <a target="_blank" [href]="urlObject.long_url">{{urlObject.long_url}}</a>
+</div>
+<div>
+  <div *ngIf="err?.error" class="alert alert-app-level">
+    {{err.error}}
+</div>
+</div>
